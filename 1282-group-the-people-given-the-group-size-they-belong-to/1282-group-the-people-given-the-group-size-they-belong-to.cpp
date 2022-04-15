@@ -1,6 +1,6 @@
 class Solution {
 public:
-    vector<vector<int>> groupThePeople(vector<int>& groupSizes) {
+    vector<vector<int>> groupThePeople(vector<int>& g) {
       /*  vector<vector<int>> res, groups(groupSizes.size() + 1);
       for (auto i = 0; i < groupSizes.size(); ++i) {
         groups[groupSizes[i]].push_back(i);
@@ -10,7 +10,9 @@ public:
         }
       }
       return res;*/
-        unordered_map<int, vector<int>> mp;
+        
+        
+        /*unordered_map<int, vector<int>> mp;
         for(int i=0;i<groupSizes.size();i++)
         {
             mp[groupSizes[i]].push_back(i);
@@ -34,6 +36,18 @@ public:
                 }
             }
         }
-        return ans;
+        return ans;*/
+        vector<vector<int>>ans;
+        unordered_map<int,vector<int>>m;
+        for(int i=0;i<g.size();i++)
+        {
+			m[g[i]].push_back(i);
+			if(m[g[i]].size()==g[i])
+            {
+                ans.push_back(m[g[i]]);
+                m[g[i]].clear();
+            }
+        }
+        return ans; 
     }
 };
