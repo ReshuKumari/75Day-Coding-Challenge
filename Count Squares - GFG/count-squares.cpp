@@ -7,19 +7,20 @@ class Solution {
   public:
     int countSquares(int N) {
         // code here
-        int cnt=0,sum=1;
-        for(int i=1;i<N;i++)
-        {
-            if(i*i<N)
-            {
-                cnt++;
-            }
-            else if(i*i>=N)
-            {
-                break;
-            }
-        }
-        return cnt;
+        int s=1,e=N;
+          int ans=-1;
+          while(s<=e){
+              int mid=s+(e-s)/2;
+              if( mid*(long long)mid<=N){
+                  ans=mid;
+                  s=mid+1;
+              }else{
+                  e=mid-1;
+              }
+          }
+          if(ans*(long long)ans!=N)
+          return ans;
+          else return ans-1;
     }
 };
 
