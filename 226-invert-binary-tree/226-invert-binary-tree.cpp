@@ -14,10 +14,22 @@ public:
     TreeNode* invertTree(TreeNode* root) {
         if(root==NULL)
             return NULL;
-        TreeNode* root1;
-        root1=root->left;
-        root->left=invertTree(root->right);
-        root->right=invertTree(root1);
+        stack<TreeNode*> s;
+        s.push(root);
+        while(s.empty()==false)
+        {
+            TreeNode* top=s.top();
+            s.pop();
+            if(top->left!=NULL)
+                s.push(top->left);
+            if(top->right!=NULL)
+                s.push(top->right);
+            swap(top->left, top->right);
+        }
         return root;
     }
 };
+
+//temp=a;
+//a=b;
+//b=temp;
