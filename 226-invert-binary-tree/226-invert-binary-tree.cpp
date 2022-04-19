@@ -14,11 +14,11 @@ public:
     TreeNode* invertTree(TreeNode* root) {
         if(root==NULL)
             return NULL;
-        stack<TreeNode*> s;
+        queue<TreeNode*> s;
         s.push(root);
         while(s.empty()==false)
         {
-            TreeNode* top=s.top();
+            TreeNode* top=s.front();
             s.pop();
             if(top->left!=NULL)
                 s.push(top->left);
