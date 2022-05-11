@@ -18,12 +18,18 @@ public:
     }
     int maxpathsum(TreeNode* root, int &maxsum)
     {
-        if(root==NULL)
-            return 0;
-        int l=max(maxpathsum(root->left,maxsum),0);
-        int r=max(maxpathsum(root->right, maxsum),0);
-        int sum=root->val+l+r;
-        maxsum=max({sum, maxsum});
-        return root->val+max(l,r);
+        if(root == NULL){
+        return 0;
+    }
+    int leftBS = root->val + maxpathsum( root->left , maxsum );
+    int rightBS = root->val + maxpathsum( root->right ,  maxsum);
+    maxsum = max({
+                maxsum,            
+                root->val,  
+                leftBS,
+                rightBS, 
+                leftBS + rightBS - root->val  
+            });
+    return max({ leftBS , rightBS , root->val });
     }
 };
