@@ -10,8 +10,8 @@ public:
             }
             else
             {
-                auto ind=lower_bound(v.begin(), v.end(), nums[i]);
-                *ind=nums[i];
+                int ind=lower_bound(v.begin(), v.end(), nums[i])-v.begin();
+                v[ind]=nums[i];
             }
         }
         return v.size();
